@@ -53,6 +53,15 @@ public class Recipe {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
+    public void addIngredient(Ingredient ingredient){
+        ingredient.setRecipe(this);
+        ingredients.add(ingredient);
+    }
+
+    public void addCategory(Category category){
+        categories.add(category);
+    }
+
     public Long getId() {
         return id;
     }
@@ -130,6 +139,7 @@ public class Recipe {
     }
 
     public void setNotes(Notes notes) {
+        notes.setRecipe(this);
         this.notes = notes;
     }
 
