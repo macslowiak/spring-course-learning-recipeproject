@@ -9,6 +9,7 @@ import guru.springframework.domain.enums.Difficulty;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Component
 public class LoadRecipeData implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -49,6 +51,7 @@ public class LoadRecipeData implements ApplicationListener<ContextRefreshedEvent
     }
 
     private List<Recipe> getRecipes() {
+        log.debug("Loading bootstrap data");
 
         List<Recipe> recipes = new ArrayList<>(2);
 
