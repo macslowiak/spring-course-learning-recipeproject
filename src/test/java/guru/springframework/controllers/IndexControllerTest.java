@@ -1,6 +1,7 @@
 package guru.springframework.controllers;
 
 
+import guru.springframework.controllers.IndexController;
 import guru.springframework.domain.Recipe;
 import guru.springframework.services.RecipeService;
 import static org.junit.Assert.assertEquals;
