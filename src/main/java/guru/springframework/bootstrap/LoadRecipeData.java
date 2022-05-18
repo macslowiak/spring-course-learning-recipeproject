@@ -93,6 +93,9 @@ public class LoadRecipeData implements ApplicationListener<ContextRefreshedEvent
                 "Garnish with slices of red radish or jigama strips. Serve with your choice of store-bought tortilla chips or make your own homemade tortilla chips." +
                 "Refrigerate leftover guacamole up to 3 days.");
 
+        guacamoleRecipe.setUrl("http://www.simplyrecipes.com/recipes/perfect_guacamole/");
+        guacamoleRecipe.setServings(4);
+        guacamoleRecipe.setSource("Simply Recipes");
         Notes guacNotes = new Notes();
         guacNotes.setRecipeNotes("Chilling tomatoes hurts their flavor. So, if you want to add chopped tomato to your guacamole, add it just before serving.");
         guacamoleRecipe.setNotes(guacNotes);
@@ -134,6 +137,9 @@ public class LoadRecipeData implements ApplicationListener<ContextRefreshedEvent
                 "5. Assemble the tacos:\n" +
                 "Slice the chicken into strips. On each tortilla, place a small handful of arugula. Top with chicken slices, sliced avocado, radishes, tomatoes, and onion slices. Drizzle with the thinned sour cream. Serve with lime wedges.");
 
+        tacosRecipe.setUrl("http://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
+        tacosRecipe.setServings(4);
+        tacosRecipe.setSource("Simply Recipes");
         Notes tacoNotes = new Notes();
         tacoNotes.setRecipeNotes("No notes");
         tacosRecipe.setNotes(tacoNotes);
