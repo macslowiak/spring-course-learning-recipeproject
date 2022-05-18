@@ -9,7 +9,7 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"
-          th:ref="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+          >
 
 
 </head>
@@ -50,6 +50,9 @@
                                 <td th:text="${recipe.description}">Recipe Description</td>
                                 <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} +'/show' }">Go to recipe</a></td>
                                 <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} +'/update' }">Update recipe</a></td>
+                                <td><a href="#" th:href="@{'/recipe/'+ ${recipe.id} + '/delete'}" th:method="delete">
+                                    <button type="submit" value="Submit" class="btn btn-danger">Delete recipe</button>
+                                </a></td>
                             </tr>
                             </tbody>
                         </table>

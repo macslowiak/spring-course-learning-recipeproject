@@ -5,14 +5,16 @@ import guru.springframework.converters.RecipeCommandToRecipe;
 import guru.springframework.converters.RecipeToRecipeCommand;
 import guru.springframework.domain.Recipe;
 import guru.springframework.repositories.RecipeRepository;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.assertEquals;
+import java.util.NoSuchElementException;
 
 
 @RunWith(SpringRunner.class)
@@ -20,6 +22,7 @@ import static org.junit.Assert.assertEquals;
 public class RecipeServiceIT {
 
     public static final String NEW_DESCRIPTION = "New Description";
+    private static final Long ID_1 = 1L;
 
     @Autowired
     RecipeService recipeService;
@@ -51,4 +54,27 @@ public class RecipeServiceIT {
         assertEquals(testRecipe.getCategories().size(), savedRecipeCommand.getCategories().size());
         assertEquals(testRecipe.getIngredients().size(), savedRecipeCommand.getIngredients().size());
     }
+
+    @Transactional
+    @Test
+    public void deleteRecipe() throws Exception {
+        //given
+        Recipe testRecipeToDelete = recipeRepository.findById(ID_1)
+                .orElseThrow(() ->new NoSuchElementException("There is no item with id=1"));
+        RecipeCommand recipeCommandToDelete = recipeToRecipeCommand.convert(testRecipeToDelete);
+
+        //when
+        recipeService.deleteReceipeCommand(recipeCommandToDelete);
+
+
+        //then
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
+            recipeService.findById(ID_1);
+        });
+
+
+    }
+
+
+
 }
